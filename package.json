@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/mahdihassani12/mern-stack#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "mongoose": "^7.0.2"
   }
 }
