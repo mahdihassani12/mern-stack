@@ -1,15 +1,15 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 function Header() {
   return (
     <nav className="navbar">
         <ul className="navbar-lists">
             <li className="nav-item">
-                <NavLink to="/" className="nav-link">Home</NavLink>
+                <NavLink to="/" className="nav-link">Posts</NavLink>
             </li>
             <li className="nav-item">
-                <NavLink to="/" className="nav-link">About</NavLink>
+                <NavLink to="/create" className="nav-link">Create</NavLink>
             </li>
         </ul>
     </nav>

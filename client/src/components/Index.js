@@ -3,7 +3,7 @@ import Post from './Post'
 
 function Index() {
   return (
-    <div>
+    <div className="app-container">
       <Post />
     </div>
   )
