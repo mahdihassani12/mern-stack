@@ -2,6 +2,7 @@
   --color-black: #000;
   --color-white: #fff;
   --color-background: #ebebeb;
+  --color-button:#065dfb;
 }
 
 body {
@@ -35,4 +36,40 @@ body {
   width: 90%;
   margin: 0 auto;
   margin-top: 30px;
+}
+
+form {
+  background-color: var(--color-background);
+  padding: 30px;
+  border-radius: 10px;
+}
+
+form .form-group {
+  display: flex;
+  margin: 15px 0px;
+}
+
+form label {
+  display: block;
+  min-width: 120px;
+}
+
+form .form-control {
+  min-width: 350px;
+  min-height: 35px;
+  border: unset;
+  padding: 0px 5px;
+  border-radius: 5px;
+}
+
+form textarea {
+  min-height: 120px !important;
+}
+
+form button {
+  border: 0px;
+  background: var(--color-button);
+  color: var(--color-white);
+  padding: 10px 30px;
+  border-radius: 5px;
 }
