@@ -1,6 +1,15 @@
 const Post = require("../models/PostModel");
 
-exports.getPosts = async (req, res) => {};
+exports.getPosts = async (req, res) => {
+  try {
+    
+    const posts = await Post.find({});
+    res.json({ posts });
+
+  } catch (error) {
+    res.status(500).send("Server error", error.message);
+  }
+};
 
 exports.storePost = async (req, res) => {
   const { title, description, postid } = req.body;
