@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import uniqid from "uniqid";
+import axios from 'axios';
 
 function Create() {
   const [title, setTitle] = useState("");
@@ -10,10 +11,13 @@ function Create() {
     let post = {
       title: title,
       description: description,
-      postid: uniqid(),
+      postid: uniqid()
     };
 
-    console.log(post);
+    axios.post("/api/posts/", post)
+    .then(res => console.log(res))
+    .catch(err => console.error(err)) 
+
   };
 
   return (
