@@ -4,7 +4,7 @@ exports.getPosts = async (req, res) => {
   try {
     
     const posts = await Post.find({});
-    res.send(posts)
+    res.send(posts);
 
   } catch (error) {
     res.status(500).send("Server error", error.message);
@@ -25,3 +25,35 @@ exports.storePost = async (req, res) => {
     res.status(500).send("Server error", error.message);
   }
 };
+
+exports.getPost = async (req, res) => {
+  const { postid } = req.params;
+  try {
+
+    const post = await Post.find({ "postid" : postid });
+    res.send(post)
+
+  } catch (error) {
+    res.status(500).send("Server error", error.message);
+  }
+}
+
+exports.updatePost = async (req, res) => {
+  const { title, description, postid } = req.body;
+  try {
+
+    const post = await Post.updateOne({postid: postid }, { title: title, description: description });
+    res.send(post);
+    
+  } catch (error) {
+    res.status(500).send("Server error", error.message);
+  }
+}
+
+exports.deletePost = async (req, res) => {
+  try {
+    
+  } catch (error) {
+    res.status(500).send("Server error", error.message);
+  }
+}
