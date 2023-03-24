@@ -1,10 +1,12 @@
 import React from 'react'
 
-function Post() {
+function Post({ post }) {
+  console.log(post)
   return (
-    <div>
-        <h1>Post item component</h1>
-    </div>
+    <>
+      <h1>{ post.title }</h1>
+      <p> { post.description } </p>
+    </>
   )
 }
 

@@ -3,18 +3,36 @@ import axios from "axios";
 import Post from "./Post";
 
 function Index() {
-
-  const [posts, setPosts] = useState();
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get("/api/posts/")
-    .then(res => console.log(res.data))
-    .catch(err => console.log(err));
+    axios
+      .get("/api/posts/")
+      .then((res) => {
+        setPosts(res.data);
+        setLoading(false);
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   return (
     <div className="app-container">
-      <Post />
+      <div className="row">
+
+        {loading ? (
+          <h1>Loading...</h1>
+        ) : (
+          posts.map((post) => {
+            return (
+              <div key={post.postid} className="col">
+                <Post post={post} />
+              </div>
+            );
+          })
+        )}
+
+      </div>
     </div>
   );
 }

@@ -73,3 +73,17 @@ form button {
   padding: 10px 30px;
   border-radius: 5px;
 }
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.col {
+  width: 30%;
+  padding: 10px;
+  margin: 0px 2px;
+  text-align: center;
+  background-color: var(--color-background);
+}

@@ -4,7 +4,7 @@ exports.getPosts = async (req, res) => {
   try {
     
     const posts = await Post.find({});
-    res.json({ posts });
+    res.send(posts)
 
   } catch (error) {
     res.status(500).send("Server error", error.message);
