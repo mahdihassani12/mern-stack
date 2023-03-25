@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Edit() {
   const params = useParams();
-
+  const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
@@ -15,10 +16,19 @@ function Edit() {
       postid: params.postid,
     };
 
-    axios.post(`http://localhost:5000/api/posts/${params.postid}`, post)
-    .then(res => console.log(res))
-    .catch(err => console.error(err)) 
-
+    axios
+      .post(`http://localhost:5000/api/posts/${params.postid}`, post)
+      .then((res) => {
+        if (res.status === 200) {
+          navigate("/");
+        }
+      })
+      .catch((err) => {
+        if (err) {
+          alert("Server error");
+          window.location = true;
+        }
+      });
   };
 
   useEffect(() => {
@@ -27,9 +37,14 @@ function Edit() {
       .then((res) => {
         const postdata = res.data[0];
         setTitle(postdata.title);
-        setDescription(postdata.description)
+        setDescription(postdata.description);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        if (err) {
+          alert("Server error");
+          window.location = true;
+        }
+      });
   }, []);
 
   return (

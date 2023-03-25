@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import uniqid from "uniqid";
-import axios from 'axios';
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Create() {
+  const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
@@ -11,13 +13,22 @@ function Create() {
     let post = {
       title: title,
       description: description,
-      postid: uniqid()
+      postid: uniqid(),
     };
 
-    axios.post("http://localhost:5000/api/posts/", post)
-    .then(res => console.log(res))
-    .catch(err => console.error(err)) 
-
+    axios
+      .post("http://localhost:5000/api/posts/", post)
+      .then((res) => {
+        if (res.status === 200) {
+          navigate("/");
+        }
+      })
+      .catch((err) => {
+        if (err) {
+          alert("Server error");
+          window.location = true;
+        }
+      });
   };
 
   return (
