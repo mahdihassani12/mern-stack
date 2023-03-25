@@ -51,7 +51,11 @@ exports.updatePost = async (req, res) => {
 }
 
 exports.deletePost = async (req, res) => {
+  const { postid } = req.params;
   try {
+
+    const post = await Post.findOneAndDelete({postid: postid });
+    res.send(post);
     
   } catch (error) {
     res.status(500).send("Server error", error.message);

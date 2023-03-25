@@ -8,7 +8,7 @@ function Index() {
 
   useEffect(() => {
     axios
-      .get("/api/posts/")
+      .get("http://localhost:5000/api/posts/")
       .then((res) => {
         setPosts(res.data);
         setLoading(false);

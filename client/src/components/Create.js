@@ -14,7 +14,7 @@ function Create() {
       postid: uniqid()
     };
 
-    axios.post("/api/posts/", post)
+    axios.post("http://localhost:5000/api/posts/", post)
     .then(res => console.log(res))
     .catch(err => console.error(err)) 
 

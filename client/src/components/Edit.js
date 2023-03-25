@@ -15,7 +15,7 @@ function Edit() {
       postid: params.postid,
     };
 
-    axios.post(`/api/posts/${params.postid}`, post)
+    axios.post(`http://localhost:5000/api/posts/${params.postid}`, post)
     .then(res => console.log(res))
     .catch(err => console.error(err)) 
 
@@ -23,7 +23,7 @@ function Edit() {
 
   useEffect(() => {
     axios
-      .get(`/api/posts/${params.postid}`)
+      .get(`http://localhost:5000/api/posts/${params.postid}`)
       .then((res) => {
         const postdata = res.data[0];
         setTitle(postdata.title);
